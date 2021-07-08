@@ -4,9 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import "bootstrap/dist/css/bootstrap.min.css"
+import { createStore } from "redux";
+import ContactList from './components/ContactList'; 
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {Provider} from 'react-redux'
+import { BrowserRouter as Router, Switch, Link, Route, } from 'react-router-dom'
+
+const store = createStore(ContactList,composeWithDevTools())
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+      
+    </Provider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
